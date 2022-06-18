@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        unordered_set<ListNode *> nodes;
+        ListNode* cur = head;
+        while (cur != nullptr) {
+            if (nodes.count(cur))
+                return true;
+            nodes.insert(cur);
+            cur = cur->next;
+        }
+        return false;
+    }
+};
